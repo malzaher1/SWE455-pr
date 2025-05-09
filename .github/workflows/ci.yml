@@ -78,3 +78,4 @@ jobs:
             run: |
               echo "Docker image successfully built and pushed to ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest"
               echo "Next Step: Conceptual deployment to a cloud platform like Render or Heroku using this image."
+              
