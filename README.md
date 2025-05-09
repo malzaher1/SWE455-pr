@@ -2,6 +2,9 @@
 
 A simple Node.js Express microservice that returns random quotes.
 
+## System Architecture
+The application is a Node.js microservice using Express, serving random quotes. It is containerized using Docker. The CI/CD pipeline on GitHub Actions lints, tests, builds the Docker image, and pushes it to GitHub Container Registry.
+
 ## Features
 
 - RESTful API endpoint `/quote` that returns random quotes
@@ -16,10 +19,14 @@ A simple Node.js Express microservice that returns random quotes.
 - Docker (optional, for containerization)
 
 ## Team Roles
-- [Friend's Name]: Initial Developer (Setup basic service, tests, initial CI)
-- [M]: Project Manager / Documentation Lead (GitHub Projects, README, Final Report compilation)
-- [M]: CI/CD Engineer (Refined CI/CD workflow, Docker push, GHCR)
-- [M]: Developer / QA Analyst (Ensured Dockerfile, test coverage, QA checks, assisted with report)
+
+- [Ibrahim Almoajel]: Project Manager / Documentation Lead (GitHub Projects, README, Final Report compilation)
+- [Mohammed Alzaher]: CI/CD Engineer (Refined CI/CD workflow, Docker push, GHCR)
+- [Ali ALrebdi]: Developer / QA Analyst (Ensured Dockerfile, test coverage, QA checks, assisted with report)
+
+## Branching Strategy
+- `main`: Protected branch representing production-ready code. Merges to main trigger Docker image push to GHCR.
+- `feature/<feature-name>`: Used for all development (e.g., `feature/ci-cd-enhancements`). Merged to `main` via Pull Requests with required status checks.
 
 
 ## Setup
