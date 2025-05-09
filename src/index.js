@@ -42,6 +42,7 @@ app.get('/quote', (req, res) => {
   res.json({ quote: randomQuote });
 });
 
+
 app.get('/quotes', (req, res) => {
   const randomQuotes = getRandomQuotes(5);
   res.json({ quotes: randomQuotes });
