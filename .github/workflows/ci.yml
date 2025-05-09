@@ -73,6 +73,7 @@ jobs:
               context: .
               push: true
               tags: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+              
 
           - name: Deployment to Cloud Placeholder
             run: |
