@@ -15,6 +15,7 @@ describe('Quote API Endpoints', () => {
     });
   });
 
+  
   describe('GET /quote', () => {
     it('should return a random quote with valid JSON structure', async () => {
       const response = await request(app).get('/quote');
