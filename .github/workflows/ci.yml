@@ -80,4 +80,8 @@ jobs:
             run: |
               echo "Docker image successfully built and pushed to ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest"
               echo "Next Step: Conceptual deployment to a cloud platform like Render or Heroku using this image."
-              
+
+          - name: Trigger Render Deploy Hook
+            if: success() # Only if push to GHCR was successful
+            run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }} 
+            
