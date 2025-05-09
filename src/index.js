@@ -4,11 +4,11 @@ const app = express();
 const port = process.env.PORT || 3004;
 
 const quotes = [
-  "The only way to do great work is to love what you do. - Steve Jobs",
-  "Innovation distinguishes between a leader and a follower. - Steve Jobs",
-  "Stay hungry, stay foolish. - Steve Jobs",
-  "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
-  "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt"
+  'The only way to do great work is to love what you do. - Steve Jobs',
+  'Innovation distinguishes between a leader and a follower. - Steve Jobs',
+  'Stay hungry, stay foolish. - Steve Jobs',
+  'Your time is limited, don\'t waste it living someone else\'s life. - Steve Jobs',
+  'The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt'
 ];
 
 // Helper function to get random quotes
@@ -48,7 +48,7 @@ app.get('/quotes', (req, res) => {
 });
 
 if (require.main === module) {
-  const server = app.listen(port)
+  app.listen(port)
     .on('error', (err) => {
       if (err.code === 'EADDRINUSE') {
         console.error(`Port ${port} is already in use. Please try a different port or free up the port.`);
