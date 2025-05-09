@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  validate_and_build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -43,3 +43,38 @@ jobs:
 
     - name: Build Docker image
       run: docker build -t quote-service . 
+
+
+
+  push_to_ghcr_and_deploy_placeholder:
+        needs: validate_and_build 
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' # Only on push to main
+        runs-on: ubuntu-latest
+        permissions:
+          contents: read
+          packages: write 
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+
+          - name: Set up Docker Buildx
+            uses: docker/setup-buildx-action@v3
+
+          - name: Login to GitHub Container Registry
+            uses: docker/login-action@v3
+            with:
+              registry: ghcr.io
+              username: ${{ github.actor }}
+              password: ${{ secrets.GITHUB_TOKEN }}
+
+          - name: Build and push Docker image to GHCR
+            uses: docker/build-push-action@v5
+            with:
+              context: .
+              push: true
+              tags: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+
+          - name: Deployment to Cloud Placeholder
+            run: |
+              echo "Docker image successfully built and pushed to ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest"
+              echo "Next Step: Conceptual deployment to a cloud platform like Render or Heroku using this image."
