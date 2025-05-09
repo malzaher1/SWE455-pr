@@ -10,6 +10,7 @@ coverage
 __tests__
 *.test.js
 
+
 # Version control
 .git
 .gitignore
